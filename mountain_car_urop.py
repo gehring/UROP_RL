@@ -49,6 +49,13 @@ class LinearTD(object):
             return
         else:
             # TODO: fill in update rules for TD
+
+            # you can use self(s,a) to get the current approximation of the
+            # value function at state s and action a
+
+            # delta \leftarrow r + \gamma * Q(s_{t+1}, a_{t+1}) - Q(s_t, a_t)
+            # theta_a \leftarrow theta_a + \alpha * delta * grad_{\theta_a}(Q(s_t,a_t))
+
             return
 
 class TabularActionSarsa(object):
@@ -64,6 +71,7 @@ class TabularActionSarsa(object):
             a_tp1 = self.policy(s_tp1)
         else:
             a_tp1 = None
+
         self.valuefn.update(self.s_t, self.a_t, r, s_tp1, a_tp1)
 
         self.s_t = s_tp1
